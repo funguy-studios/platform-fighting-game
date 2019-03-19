@@ -4,52 +4,38 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Get ALL THE VARIABLES
     public float velocity = 5;
     public float jumpHeight = 5;
-    public bool groundCheck;
+    private bool groundCheck;
+    private const int Max_Jump = 2;
+    private int currentJump = 0;
     Vector2 input;
     private Rigidbody2D rb;
-    Vector2 movement = new Vector2(0, 0);
-
+    public Transform player;
+    private Transform floor;
+    
     void Start()
     {
-        //Get RB
         rb = GetComponent<Rigidbody2D>();
-        //Set the movement vector to current velocity (for gravity)
-        movement.y = rb.velocity.y;
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
-        //ALL THE FUNCTIONS
         GetInput();
         Jump();
         Move();
-        if (input.magnitude > 0.5f)
-        {
-            input.Normalize();
-        }
-        else
-        {
-            return;
-        }
-        //Actually Move with the vector
-        rb.velocity = movement;
     }
 
-    public void GetInput()
+    void GetInput()
     {
-        //Get input
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
     }
-
-    public void Move()
+    void Move()
     {
-        float horizontalMovement = (Input.GetAxis("Horizontal") * velocity)*20;
-        //Flip Sprite
+        float horizontalMovement = Input.GetAxis("Horizontal") * velocity;
+
         if (horizontalMovement < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
@@ -58,29 +44,31 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        //Frames for bad computers
         horizontalMovement *= Time.deltaTime;
-        //Set movement x
-        movement.x = horizontalMovement;
+        transform.Translate(horizontalMovement, 0, 0);
+    }
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && (groundCheck || Max_Jump > currentJump))
+        {
+
+            rb.velocity = new Vector3(0, jumpHeight);
+            groundCheck = false;
+            currentJump++;
+            {
+
+            }
+        }
     }
 
-    public void Jump()
-    {
-        //Check for able to jump
-        if (Input.GetButtonDown("Jump") && groundCheck)
-        {
-            //Jumping
-            movement.y = jumpHeight+rb.velocity.y;
-            groundCheck = false;
-        }
-        else { movement.y = rb.velocity.y; }
-    }
     void OnCollisionEnter2D(Collision2D other)
     {
-        //Change groundCheck variable
         if (other.gameObject.tag == "Ground")
         {
             groundCheck = true;
+            currentJump = 0;
+            floor = other.gameObject.transform;
+            player.rotation = floor.rotation;
         }
     }
 }
