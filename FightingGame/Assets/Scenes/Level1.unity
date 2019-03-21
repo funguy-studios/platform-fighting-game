@@ -3140,29 +3140,13 @@ GameObject:
   - component: {fileID: 749765220}
   - component: {fileID: 749765219}
   - component: {fileID: 749765218}
-  - component: {fileID: 749765217}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &749765217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749765216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00aeeb37427403b439de93edc335f410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 10
-  jumpHeight: 15
-  player: {fileID: 749765221}
 --- !u!50 &749765218
 Rigidbody2D:
   serializedVersion: 4
@@ -3266,7 +3250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749765216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 216.2, y: 19.5, z: 0}
+  m_LocalPosition: {x: 232.71, y: 19.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
