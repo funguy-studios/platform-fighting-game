@@ -9,6 +9,7 @@ public class Enemy_Basic : MonoBehaviour
     const float movespeed = 1f;
     int direction = -1; //1 == right -1 == left
     public int maxmove;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,12 @@ public class Enemy_Basic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Move Object
-        Move();
+        if (Vector2.Distance(transform.position, player.transform.position)>maxmove)
+        {
+            Debug.Log("IN");
+            Move();
+        }
+
     }
     //Movement
     private void Move()
@@ -43,6 +48,12 @@ public class Enemy_Basic : MonoBehaviour
         move++;
         //Move the enemy
         enemy.velocity = new Vector2(movespeed * direction, enemy.velocity.y);
+    }
+
+    //Move towards player if they are near
+    private void MoveTowardsPlayer()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, maxmove);
     }
 
 
