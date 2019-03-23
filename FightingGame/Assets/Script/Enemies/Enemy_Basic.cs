@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Enemy_Basic : MonoBehaviour
 {
@@ -19,11 +21,9 @@ public class Enemy_Basic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.transform.position)>maxmove)
-        {
-            Debug.Log("IN");
-            Move();
-        }
+        if (Vector2.Distance(transform.position, player.transform.position)>=9) { Move(); }
+        else { MoveTowardsPlayer(); }
+        
 
     }
     //Movement
@@ -53,7 +53,7 @@ public class Enemy_Basic : MonoBehaviour
     //Move towards player if they are near
     private void MoveTowardsPlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, maxmove);
+        Debug.Log("MOVING TOWARDS PLAYER");
     }
 
 
@@ -62,7 +62,7 @@ public class Enemy_Basic : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
