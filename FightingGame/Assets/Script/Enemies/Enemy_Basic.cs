@@ -12,6 +12,9 @@ public class Enemy_Basic : MonoBehaviour
     int direction = -1; //1 == right -1 == left
     GameObject player;
     Vector3 offset;
+    public int attack = 10;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +71,8 @@ public class Enemy_Basic : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PlayerHealth playerhealth = player.GetComponent<PlayerHealth>();
+            playerhealth.TakeDamage(attack);
         }
 
     }

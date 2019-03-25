@@ -3593,6 +3593,7 @@ GameObject:
   - component: {fileID: 1810232023}
   - component: {fileID: 1810232022}
   - component: {fileID: 1810232026}
+  - component: {fileID: 1810232027}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -3724,6 +3725,24 @@ MonoBehaviour:
   velocity: 10
   jumpHeight: 12
   player: {fileID: 1810232025}
+--- !u!114 &1810232027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810232021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cbe86c0dc4847419292a3b328ff568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!1001 &1865085395
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3140,6 +3140,8 @@ GameObject:
   - component: {fileID: 749765220}
   - component: {fileID: 749765219}
   - component: {fileID: 749765218}
+  - component: {fileID: 749765222}
+  - component: {fileID: 749765217}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -3147,6 +3149,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &749765217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749765216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00aeeb37427403b439de93edc335f410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 5
+  jumpHeight: 5
+  player: {fileID: 0}
 --- !u!50 &749765218
 Rigidbody2D:
   serializedVersion: 4
@@ -3256,6 +3273,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749765222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749765216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cbe86c0dc4847419292a3b328ff568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!4 &780023436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3302406753913720286, guid: 671c94bf33c79cc468cb1c67d574e4f3,
